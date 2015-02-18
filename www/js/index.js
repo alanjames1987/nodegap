@@ -62,6 +62,10 @@ var boot = function ()
 	exec_button.innerHTML = "RUN";
 	exec_button.style.margin = '8px';
 	exec_button.style.padding = '8px';
+	var clear_button = table_row_div.appendChild(document.createElement('button'));
+	clear_button.innerHTML = "CLEAR";
+	clear_button.style.margin = '8px';
+	clear_button.style.padding = '8px';
 
 	//var div = table_div.appendChild(document.createElement('div'));
 	//var output_textarea = div.appendChild(document.createElement('textarea'));
@@ -99,6 +103,13 @@ var boot = function ()
 			//exec_button.disabled = false;
 			setTimeout(function () { exec_button.disabled = false; }, 1000);
 		});
+	}, false);
+
+	clear_button.addEventListener('click', function (evt)
+	{
+		exec_button.disabled = true;
+		source_editor.setValue(""); // clear input
+		output_editor.setValue(""); // clear output
 	}, false);
 
 	var xhr = new XMLHttpRequest();
